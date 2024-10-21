@@ -14,6 +14,18 @@ def check_docker_installed():
         subprocess.run(["sudo", "apt", "install", "-y", "docker.io"], check=True)
         print("Docker has been installed successfully.")
 
+def start_docker_service():
+    """Start the Docker service if it's not running."""
+    print("Checking if Docker service is running...")
+    try:
+        # Check if the Docker service is active
+        subprocess.run(["sudo", "systemctl", "start", "docker"], check=True)
+        subprocess.run(["sudo", "systemctl", "enable", "docker"], check=True)
+        print("Docker service started successfully.")
+    except subprocess.CalledProcessError:
+        print("Failed to start Docker service. Please check your Docker installation.")
+        exit(1)
+
 def pull_docker_image(image):
     """Pull the Docker image."""
     print(f"Pulling Docker image: {image}")
@@ -35,6 +47,9 @@ def run_docker_container(image):
 if __name__ == "__main__":
     # Check if Docker is installed and install if necessary
     check_docker_installed()
+
+    # Start the Docker service
+    start_docker_service()
 
     # Pull the minimal Debian Docker image
     pull_docker_image(docker_image)
