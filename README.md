@@ -23,7 +23,7 @@ This is a Python script designed to simplify the management of Docker containers
 2. Make the script executable:
 
    ```bash
-   chmod +x docker.py
+   chmod +x minideb-docker.py
 
 run:
 
