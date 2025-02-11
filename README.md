@@ -23,7 +23,10 @@ This is a Python script designed to simplify the management of Docker containers
 2. Make the script executable:
 
    ```bash
+   git clone https://github.com/GlitchLinux/docker.py
+   cd docker.py
    chmod +x minideb-docker.py
+   sudo python3 minideb-docker.py
 
 run:
 
